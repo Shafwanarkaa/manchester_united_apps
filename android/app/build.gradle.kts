@@ -39,6 +39,12 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("com.google.guava:guava:28.1-android")
+    }
+}
+
 flutter {
     source = "../.."
 }

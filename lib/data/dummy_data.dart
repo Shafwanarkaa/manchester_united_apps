@@ -36,19 +36,42 @@ class DummyData {
     ),
   ];
 
-  // --- SQUAD ---
-  static final List<Map<String, String>> squad = [
-    {'name': 'André Onana', 'position': 'Goalkeeper', 'number': '24'},
-    {'name': 'Diogo Dalot', 'position': 'Defender', 'number': '20'},
-    {'name': 'Lisandro Martínez', 'position': 'Defender', 'number': '6'},
-    {'name': 'Harry Maguire', 'position': 'Defender', 'number': '5'},
-    {'name': 'Aaron Wan-Bissaka', 'position': 'Defender', 'number': '29'},
-    {'name': 'Kobbie Mainoo', 'position': 'Midfielder', 'number': '37'},
-    {'name': 'Bruno Fernandes', 'position': 'Midfielder', 'number': '8'},
-    {'name': 'Scott McTominay', 'position': 'Midfielder', 'number': '39'},
-    {'name': 'Alejandro Garnacho', 'position': 'Forward', 'number': '17'},
-    {'name': 'Rasmus Højlund', 'position': 'Forward', 'number': '11'},
-    {'name': 'Marcus Rashford', 'position': 'Forward', 'number': '10'},
+  // --- SQUAD (Updated with photos) ---
+  static final List<Map<String, dynamic>> squad = [
+    // Goalkeepers
+    {'name': 'Altay Bayindir', 'position': 'Goalkeeper', 'number': '1', 'image': 'https://tmssl.akamaized.net/images/portrait/header/335619-1693832933.jpg'},
+    {'name': 'Tom Heaton', 'position': 'Goalkeeper', 'number': '22', 'image': 'https://tmssl.akamaized.net/images/portrait/header/41250-1685021422.jpg'},
+    {'name': 'Steven Lammens', 'position': 'Goalkeeper', 'number': '31', 'image': 'https://tmssl.akamaized.net/images/portrait/header/541203-1685023933.jpg'},
+
+    // Defenders
+    {'name': 'Matthijs de Ligt', 'position': 'Defender', 'number': '4', 'image': 'https://tmssl.akamaized.net/images/portrait/header/326031-1685022288.jpg'},
+    {'name': 'Harry Maguire', 'position': 'Defender', 'number': '5', 'image': 'https://tmssl.akamaized.net/images/portrait/header/17761-1685021503.jpg'},
+    {'name': 'Lisandro Martínez', 'position': 'Defender', 'number': '6', 'image': 'https://tmssl.akamaized.net/images/portrait/header/487615-1685021960.jpg'},
+    {'name': 'Leny Yoro', 'position': 'Defender', 'number': '15', 'image': 'https://tmssl.akamaized.net/images/portrait/header/1012379-1699971037.jpg'},
+    {'name': 'Luke Shaw', 'position': 'Defender', 'number': '23', 'image': 'https://tmssl.akamaized.net/images/portrait/header/183288-1685021647.jpg'},
+    {'name': 'Ayden Heaven', 'position': 'Defender', 'number': '26', 'image': 'https://ballerupdates.com/wp-content/uploads/2024/02/Ayden-Heaven.jpg'},
+    {'name': 'Tyler Fredricson', 'position': 'Defender', 'number': '33', 'image': 'https://thepeoplesperson.com/wp-content/uploads/2024/02/tyler-fredricson-man-utd-academy-1024x683.jpg'},
+    {'name': 'Tyrell Malacia', 'position': 'Defender', 'number': '12', 'image': 'https://tmssl.akamaized.net/images/portrait/header/267615-1685021873.jpg'},
+    {'name': 'Diego Leon', 'position': 'Defender', 'number': '35', 'image': 'https://www.fifacm.com/content/media/players/24/281639.png'},
+    {'name': 'Noussair Mazraoui', 'position': 'Defender', 'number': '3', 'image': 'https://tmssl.akamaized.net/images/portrait/header/257373-1685022212.jpg'},
+    {'name': 'Diogo Dalot', 'position': 'Defender', 'number': '2', 'image': 'https://tmssl.akamaized.net/images/portrait/header/357155-1685021743.jpg'},
+    {'name': 'Patrick Dorgu', 'position': 'Defender', 'number': '13', 'image': 'https://tmssl.akamaized.net/images/portrait/header/921536-1688632616.jpg'},
+
+    // Midfielders
+    {'name': 'Bruno Fernandes', 'position': 'Midfielder', 'number': '8', 'image': 'https://tmssl.akamaized.net/images/portrait/header/240306-1685021798.jpg'},
+    {'name': 'Casemiro', 'position': 'Midfielder', 'number': '18', 'image': 'https://tmssl.akamaized.net/images/portrait/header/10256-1685021571.jpg'},
+    {'name': 'Manuel Ugarte', 'position': 'Midfielder', 'number': '25', 'image': 'https://tmssl.akamaized.net/images/portrait/header/489980-1685350849.jpg'},
+    {'name': 'Kobbie Mainoo', 'position': 'Midfielder', 'number': '37', 'image': 'https://tmssl.akamaized.net/images/portrait/header/798263-1708684742.jpg'},
+    {'name': 'Mason Mount', 'position': 'Midfielder', 'number': '7', 'image': 'https://tmssl.akamaized.net/images/portrait/header/344111-1688632190.jpg'},
+
+    // Forwards
+    {'name': 'Amad', 'position': 'Forward', 'number': '16', 'image': 'https://tmssl.akamaized.net/images/portrait/header/536835-1685022135.jpg'},
+    {'name': 'Matheus Cunha', 'position': 'Forward', 'number': '10', 'image': 'https://tmssl.akamaized.net/images/portrait/header/517892-1692886497.jpg'},
+    {'name': 'Bryan Mbeumo', 'position': 'Forward', 'number': '19', 'image': 'https://tmssl.akamaized.net/images/portrait/header/399461-1692886733.jpg'},
+    {'name': 'Shola Lacey', 'position': 'Forward', 'number': '61', 'image': 'https://thepeoplesperson.com/wp-content/uploads/2023/10/shea-lacey-man-utd-academy-1-e1697211116824.jpg'},
+    {'name': 'Joshua Zirkzee', 'position': 'Forward', 'number': '11', 'image': 'https://tmssl.akamaized.net/images/portrait/header/435648-1709720333.jpg'},
+    {'name': 'Benjamin Sesko', 'position': 'Forward', 'number': '30', 'image': 'https://tmssl.akamaized.net/images/portrait/header/628522-1688632408.jpg'},
+    {'name': 'Chido Obi', 'position': 'Forward', 'number': '32', 'image': 'https://tmssl.akamaized.net/images/portrait/header/1004882-1715091726.jpg'},
   ];
 
   // --- SHOP (UPDATED) ---

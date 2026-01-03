@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'squad_screen.dart';
 import 'standings_screen.dart';
@@ -15,20 +14,26 @@ class CalendarScreen extends StatelessWidget {
       child: Scaffold(
         // We use a nested AppBar for the tabs within the Calendar screen.
         appBar: AppBar(
-          // This ensures the main AppBar's back button doesn't appear.
           automaticallyImplyLeading: false,
-          // The TabBar contains the labels for each tab.
-          title: TabBar(
+          toolbarHeight: 0, // Remove toolbar space since we only have TabBar
+          bottom: TabBar(
             tabs: const [
-              Tab(text: 'Fixtures'),
-              Tab(text: 'Standings'),
-              Tab(text: 'Squad'),
+              Tab(icon: Icon(Icons.event), text: 'Fixtures'),
+              Tab(icon: Icon(Icons.emoji_events), text: 'Standings'),
+              Tab(icon: Icon(Icons.groups), text: 'Squad'),
             ],
-            // Indicator and label styling for better visual feedback.
-            indicatorColor: Colors.white,
+            indicatorColor: const Color(0xFFFDB913), // Gold indicator
             indicatorWeight: 3,
-            labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.white70,
+            labelStyle: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 13,
+            ),
+            unselectedLabelStyle: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 12,
+            ),
           ),
         ),
         // TabBarView holds the content for each tab.

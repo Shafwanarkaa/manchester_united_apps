@@ -105,10 +105,10 @@ class _StandingsScreenState extends State<StandingsScreen> {
 
   Widget _buildHeader() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        border: Border(bottom: BorderSide(color: Colors.grey[300]!)),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 245, 243, 243),
+        border: Border(bottom: BorderSide(color: Color(0xFFDA291C), width: 2)),
       ),
       child: Row(
         children: [
@@ -138,13 +138,22 @@ class _StandingsScreenState extends State<StandingsScreen> {
           ),
           const SizedBox(
             width: 30,
-            child: Text('GD', style: TextStyle(fontWeight: FontWeight.bold)),
+            child: Text(
+              'GD',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
           ),
           const SizedBox(
             width: 40,
             child: Text(
               'Pts',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
               textAlign: TextAlign.right,
             ),
           ),
@@ -165,12 +174,24 @@ class _StandingsScreenState extends State<StandingsScreen> {
             teamName.contains('Manchester United');
         final style = TextStyle(
           fontWeight: isMU ? FontWeight.bold : FontWeight.normal,
-          color: isMU ? Colors.red.shade800 : Colors.black,
+          color: isMU ? const Color(0xFFDA291C) : const Color(0xFF333333),
+          fontSize: 14,
         );
 
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-          color: isMU ? Colors.red.withOpacity(0.05) : Colors.transparent,
+          decoration: BoxDecoration(
+            color:
+                isMU
+                    ? const Color(0xFFDA291C).withOpacity(0.08)
+                    : Colors.transparent,
+            border:
+                isMU
+                    ? const Border(
+                      left: BorderSide(color: Color(0xFFDA291C), width: 4),
+                    )
+                    : null,
+          ),
           child: Row(
             children: [
               SizedBox(
@@ -235,7 +256,14 @@ class _StandingsScreenState extends State<StandingsScreen> {
                 width: 40,
                 child: Text(
                   team['intPoints']?.toString() ?? '-',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color:
+                        isMU
+                            ? const Color(0xFFDA291C)
+                            : const Color(0xFF000000),
+                    fontSize: 15,
+                  ),
                   textAlign: TextAlign.right,
                 ),
               ),

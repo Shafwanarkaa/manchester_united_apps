@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../services/api_service.dart'; // Import the ApiService
 
@@ -54,10 +53,14 @@ class _SquadScreenState extends State<SquadScreen> {
         final players = snapshot.data!;
 
         // The existing logic for separating players by position.
-        final goalkeepers = players.where((p) => p['position'] == 'Goalkeeper').toList();
-        final defenders = players.where((p) => p['position'] == 'Defender').toList();
-        final midfielders = players.where((p) => p['position'] == 'Midfielder').toList();
-        final forwards = players.where((p) => p['position'] == 'Forward').toList();
+        final goalkeepers =
+            players.where((p) => p['position'] == 'Goalkeeper').toList();
+        final defenders =
+            players.where((p) => p['position'] == 'Defender').toList();
+        final midfielders =
+            players.where((p) => p['position'] == 'Midfielder').toList();
+        final forwards =
+            players.where((p) => p['position'] == 'Forward').toList();
 
         // The existing ListView layout.
         return ListView(
@@ -79,14 +82,34 @@ class _SquadScreenState extends State<SquadScreen> {
   // --- Helper Widgets (retained and improved from the previous version) ---
 
   Widget _buildSectionHeader(String title, BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 8.0),
-      child: Text(
-        title,
-        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+    return Container(
+      margin: const EdgeInsets.fromLTRB(12.0, 16.0, 12.0, 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFDA291C),
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          const Icon(Icons.sports_soccer, color: Color(0xFFFDB913), size: 20),
+          const SizedBox(width: 8),
+          Text(
+            title.toUpperCase(),
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.black54,
+              color: Colors.white,
+              fontSize: 16,
+              letterSpacing: 1.0,
             ),
+          ),
+        ],
       ),
     );
   }
@@ -94,26 +117,116 @@ class _SquadScreenState extends State<SquadScreen> {
   Widget _buildPlayerTile(Map<String, dynamic> player) {
     // Use a placeholder for the image if it's missing or invalid.
     final imageUrl = player['image'] ?? player['photo'] ?? '';
+    final playerNumber = player['number']?.toString() ?? '';
 
-    return ListTile(
-      leading: CircleAvatar(
-        radius: 30,
-        backgroundColor: Colors.grey[200],
-        backgroundImage: (imageUrl.isNotEmpty && imageUrl.startsWith('http')) 
-            ? NetworkImage(imageUrl) 
-            : null, // Don't show a broken image icon for invalid URLs
-        child: (imageUrl.isEmpty || !imageUrl.startsWith('http'))
-            ? const Icon(Icons.person, size: 30, color: Colors.grey) // Placeholder icon
-            : null,
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
+          ),
+        ],
       ),
-      title: Text(
-        player['name'] ?? 'Unknown Player',
-        style: const TextStyle(fontWeight: FontWeight.bold),
-      ),
-      subtitle: Text(player['position'] ?? 'N/A'),
-      trailing: Text(
-        (player['number'] != null) ? '#${player['number']}' : '',
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+      child: Card(
+        elevation: 0,
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(color: Colors.grey.shade200, width: 1),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            children: [
+              // Player Photo
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: const Color(0xFFDA291C).withOpacity(0.3),
+                    width: 2,
+                  ),
+                ),
+                child: ClipOval(
+                  child:
+                      (imageUrl.isNotEmpty && imageUrl.startsWith('http'))
+                          ? Image.network(
+                            imageUrl,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                color: Colors.grey[200],
+                                child: const Icon(
+                                  Icons.person,
+                                  size: 32,
+                                  color: Colors.grey,
+                                ),
+                              );
+                            },
+                          )
+                          : Container(
+                            color: Colors.grey[200],
+                            child: const Icon(
+                              Icons.person,
+                              size: 32,
+                              color: Colors.grey,
+                            ),
+                          ),
+                ),
+              ),
+              const SizedBox(width: 16),
+              // Player Info
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      player['name'] ?? 'Unknown Player',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Color(0xFF000000),
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      player['position'] ?? 'N/A',
+                      style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+                    ),
+                  ],
+                ),
+              ),
+              // Jersey Number
+              if (playerNumber.isNotEmpty)
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFDB913).withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    '#$playerNumber',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFFDB913),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart'; // Import provider
 import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
 import 'services/cart_service.dart'; // Import the new CartService
 
 void main() {
@@ -18,33 +18,89 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => CartService(),
       child: MaterialApp(
-        title: 'Kingdom Need You',
+        title: 'Manchester United',
         theme: ThemeData(
-          // Define the primary color scheme for the app.
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.red,
-            primary: Colors.red.shade900, // A deeper red for primary elements
-            secondary: Colors.amber.shade700, // A golden accent color
-            background: Colors.grey.shade100, // A light grey background
+          // Manchester United Official Colors
+          colorScheme: ColorScheme.light(
+            primary: const Color(0xFFDA291C), // Official MU Red
+            secondary: const Color(0xFFFDB913), // Gold accent
+            surface: Colors.white,
+            background: const Color(0xFFF5F5F5),
+            error: Colors.red.shade700,
           ),
-          // Define the app bar theme.
-          appBarTheme: AppBarTheme(
-            backgroundColor: Colors.red.shade900,
-            foregroundColor: Colors.white, // White text and icons on the app bar
-            elevation: 4,
+
+          // AppBar Theme
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xFFDA291C), // MU Red
+            foregroundColor: Colors.white,
+            elevation: 2,
             centerTitle: true,
+            titleTextStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.5,
+            ),
           ),
-          // Define the bottom navigation bar theme.
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+
+          // Bottom Navigation Bar Theme
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             backgroundColor: Colors.white,
-            selectedItemColor: Colors.red.shade900, // Color for the selected icon
-            unselectedItemColor: Colors.grey.shade600, // Color for unselected icons
+            selectedItemColor: Color(0xFFDA291C), // MU Red
+            unselectedItemColor: Color(0xFF666666),
+            selectedLabelStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+            ),
+            unselectedLabelStyle: TextStyle(fontSize: 11),
             showUnselectedLabels: true,
+            elevation: 8,
           ),
-          // Use Material 3 design.
+
+          // Card Theme
+          cardTheme: CardTheme(
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          ),
+
+          // Text Theme
+          textTheme: const TextTheme(
+            headlineLarge: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF000000),
+            ),
+            headlineMedium: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF000000),
+            ),
+            headlineSmall: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF000000),
+            ),
+            titleLarge: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Color(0xFF000000),
+            ),
+            titleMedium: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Color(0xFF333333),
+            ),
+            bodyLarge: TextStyle(fontSize: 16, color: Color(0xFF333333)),
+            bodyMedium: TextStyle(fontSize: 14, color: Color(0xFF666666)),
+          ),
+
+          // Use Material 3
           useMaterial3: true,
         ),
-        home: const HomeScreen(),
+        home: const SplashScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/cart_service.dart';
@@ -19,10 +18,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Use NewsScreen as the default home screen (index 0)
   static const List<Widget> _widgetOptions = <Widget>[
-    NewsScreen(),      // Index 0: News (replaces empty home)
-    CalendarScreen(),  // Index 1: Calendar
-    NewsScreen(),      // Index 2: News
-    ShopScreen(),      // Index 3: Shop
+    NewsScreen(showCarousel: true), // Index 0: Home (with carousel)
+    CalendarScreen(), // Index 1: Calendar
+    NewsScreen(showCarousel: false), // Index 2: News (no carousel)
+    ShopScreen(), // Index 3: Shop
   ];
 
   void _onItemTapped(int index) {
@@ -42,32 +41,21 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       });
     }
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text(_getAppBarTitle(_selectedIndex)),
-        actions: [
-          if (_selectedIndex == 3)
-            _buildCartIcon(context),
-        ],
+        actions: [if (_selectedIndex == 3) _buildCartIcon(context)],
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
             label: 'Calendar',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.article),
-            label: 'News',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.article), label: 'News'),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag),
             label: 'Shop',

@@ -52,13 +52,24 @@ Follow these steps to get the project running on your local machine.
    cd manchester-united-fan-app
    ```
 
-2. **Install dependencies:**
+2. **API Configuration:**
+
+   - Create a `.env` file in the root directory:
+     ```bash
+     cp .env.example .env
+     ```
+   - Open `.env` and replace the placeholders with your own keys from:
+     - [Football-Data.org](https://www.football-data.org/)
+     - [RapidAPI (API-Football)](https://rapidapi.com/api-sports/api/api-football)
+     - [NewsAPI](https://newsapi.org/)
+
+3. **Install dependencies:**
 
    ```bash
    flutter pub get
    ```
 
-3. **Run the application:**
+4. **Run the application:**
 
    ```bash
    # Run on connected mobile device or emulator

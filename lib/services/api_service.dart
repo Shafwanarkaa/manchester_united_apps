@@ -1,14 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart'; // Import dotenv
 import '../data/dummy_data.dart';
 import '../models/news_article.dart'; // Import the NewsArticle model
 
 class ApiService {
   // --- Keys & Config ---
-  static const String _fdApiKey = 'eee805659bf74cab8f5b71da83ffbe4c';
-  static const String _rapidApiKey = '6100d0f820a81af17c75fc65199f25e4';
-  static const String _newsApiKey = '7c225cfdeda24ea2850c01cfd72eae8d';
+  static final String _fdApiKey = dotenv.env['FD_API_KEY'] ?? '';
+  static final String _rapidApiKey = dotenv.env['RAPID_API_KEY'] ?? '';
+  static final String _newsApiKey = dotenv.env['NEWS_API_KEY'] ?? '';
 
   static const String _fdTeamId = '66';
   static const String _rapidTeamId = '33';
